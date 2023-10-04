@@ -1,7 +1,7 @@
 package ArraysandStrings;
 
 public class StringCompression {
-    
+
     public static String approachone(String str){
         int count=0;
         StringBuilder str2 = new StringBuilder();
