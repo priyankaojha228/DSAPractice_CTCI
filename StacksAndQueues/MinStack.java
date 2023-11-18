@@ -5,7 +5,6 @@ import java.io.*;
 class MinStack {
     private static int min;
     private static Stack<Integer> s2;
-    private static int top;
     private static Stack<Integer> s1;
     public MinStack() {
         s1 = new Stack<Integer>();
