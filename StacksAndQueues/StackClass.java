@@ -1,11 +1,11 @@
 package StacksAndQueues;
 
-public class Stack {
+public class StackClass {
 
     private static int[] arr;
     private static int capacity;
     private static int top;
-    Stack(int size){
+    StackClass(int size){
         arr = new int[size];
         capacity=size;
         top=-1;
@@ -36,7 +36,7 @@ public class Stack {
     }
     public static void main(String[] args){
 
-        Stack st = new Stack(5);
+        StackClass st = new StackClass(5);
         st.push(1);
         st.push(2);
         st.push(3);
