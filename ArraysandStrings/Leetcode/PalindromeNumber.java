@@ -1,5 +1,5 @@
-package ArraysandStrings.MorePracticeQuestions;
-import java.util.*;
+package ArraysandStrings.Leetcode;
+
 /*Given an integer x, return true if x is a
 palindrome, and false otherwise.*/
 public class PalindromeNumber {
