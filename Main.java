@@ -1,15 +1,18 @@
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {12,111,1,45,4567};
-        int count=0;
-        for(int i=0;i<arr.length;i++){
-            String str = Integer.toString(arr[i]);
-            if(str.length()%2==0){
-                count+=1;
-            }
+        String s = "Hello how are you Contestant";
+        int k = 4;
+        StringBuilder str = new StringBuilder();
+        String[] seq = s.split(" ");
+        for(int i=0;i<k;i++){
+            str.append(seq[i]);
+            str.append(" ");
         }
-        System.out.println(count);
+        String str1 = str.toString();
+        System.out.println(str1.substring(0,str1.length()));
+
+
     }
 
 
