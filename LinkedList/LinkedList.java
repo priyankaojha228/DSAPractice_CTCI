@@ -224,34 +224,56 @@ public class LinkedList {
     }
 
     public static Node findIntersection(LinkedList l1, LinkedList l2){
-        if(l1==null || l2==null){
-            return null;
+        Node headA = l1.head;
+        Node headB = l2.head;
+        int lenA=0;
+        int lenB=0;
+        int longlen=0;
+        int shortlen=0;
+        boolean flag= false;
+        Node currA = headA;
+        Node currB = headB;
+        while(currA!=null){
+            lenA+=1;
+            currA=currA.next;
         }
-        Result res1 = getTailandSize(l1);
-        Result res2 = getTailandSize(l2);
-        if(res1.tail!=res2.tail){
-            return null;
+        while(currB!=null){
+            lenB+=1;
+            currB=currB.next;
         }
+        int diff = lenA-lenB;
+        if(diff<0){
+            longlen=lenB;
+            shortlen=lenA;
+        }else if(diff>0){
+            longlen=lenA;
+            shortlen=lenB;
+            flag=true;
+        }
+        else{shortlen=lenA;}
+        diff=Math.abs(diff);
+        if(diff!=0){
+            for(int i=0;i<diff;i++){
+                if(flag){
+                    headA=headA.next;
+                }
+                else{
+                    headB=headB.next;
+                }
 
-        Node shorter = res1.size<res2.size ? l1.head:l2.head;
-        Node longer = res1.size>res2.size ? l1.head:l2.head;
-
-        longer = getKthNode(longer,Math.abs(res1.size-res2.size));
-        while(shorter!=longer){
-            shorter=shorter.next;
-            longer=longer.next;
+            }}
+        for(int i=0;i<shortlen;i++){
+            if(headA==headB){
+                return headA;
+            }
+            else if(headA.next==headB.next){
+                return headA.next;
+            }
+            headA=headA.next;
+            headB=headB.next;
         }
-        return longer;
-    }
+        return null;
 
-    public static Result getTailandSize(LinkedList list){
-        int size =1;
-        Node curr = list.head;
-        while(curr.next!=null){
-            size++;
-            curr=curr.next;
-        }
-        return new Result(curr,size);
     }
 
     public static Node getKthNode(Node head, int k){
