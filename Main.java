@@ -1,16 +1,28 @@
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        String s = "Hello how are you Contestant";
-        int k = 4;
-        StringBuilder str = new StringBuilder();
-        String[] seq = s.split(" ");
-        for(int i=0;i<k;i++){
-            str.append(seq[i]);
-            str.append(" ");
+        int[] nums = {3,6,1,0};
+        int firstmax = Integer.MIN_VALUE;
+        int firstind=0;
+        int secondmax = Integer.MIN_VALUE;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>firstmax){
+                firstmax=nums[i];
+                firstind=i;
+            }
         }
-        String str1 = str.toString();
-        System.out.println(str1.substring(0,str1.length()));
+        System.out.println(firstmax);
+        for(int i=0;i<nums.length;i++){
+            if((nums[i]>secondmax) && (secondmax<firstmax)){
+                secondmax=nums[i];
+                System.out.println(secondmax);
+            }
+        }
+        //System.out.println(secondmax);
+        if(firstmax>=(2*secondmax)){
+            System.out.println(firstind);
+        }
+        System.out.println(-1);
 
 
     }
