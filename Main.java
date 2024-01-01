@@ -1,28 +1,24 @@
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        int[] nums = {3,6,1,0};
-        int firstmax = Integer.MIN_VALUE;
-        int firstind=0;
-        int secondmax = Integer.MIN_VALUE;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]>firstmax){
-                firstmax=nums[i];
-                firstind=i;
+        int[][] isConnected = {{1,1,0},{1,1,0},{0,0,1}};
+        String str = "";
+        int count=0;
+        for(int i=0;i<isConnected.length;i++){
+            for(int j=0;j<isConnected[0].length;j++){
+                String str_i = Integer.toString(i);
+                String str_j = Integer.toString(j);
+                if(isConnected[i][j]==1 && !str.contains(str_i)){
+                    count+=1;
+                    str+=str_i;
+                }
+                if(isConnected[i][j]==1 && !str.contains(str_j)){
+                    count+=1;
+                    str+=str_j;
+                }
             }
         }
-        System.out.println(firstmax);
-        for(int i=0;i<nums.length;i++){
-            if((nums[i]>secondmax) && (secondmax<firstmax)){
-                secondmax=nums[i];
-                System.out.println(secondmax);
-            }
-        }
-        //System.out.println(secondmax);
-        if(firstmax>=(2*secondmax)){
-            System.out.println(firstind);
-        }
-        System.out.println(-1);
+        System.out.println(count);
 
 
     }
