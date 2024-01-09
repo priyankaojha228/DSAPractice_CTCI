@@ -7,7 +7,7 @@ public class Circularqueue {
     private int tail;
     private int length;
 
-    public MyCircularQueue(int k) {
+    public Circularqueue(int k) {
         arr = new int[k];
         head=-1;
         tail=-1;
