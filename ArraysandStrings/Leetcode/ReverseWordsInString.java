@@ -17,7 +17,7 @@ Example 2:
 
 Input: s = "  hello world  "
 Output: "world hello"*/
-public class RemoveWordsInString {
+public class ReverseWordsInString {
     public String reverseWords(String s) {
         String s1 = s.replaceAll("\\s+"," ").trim();
         String[] strarr = s1.split(" ");
