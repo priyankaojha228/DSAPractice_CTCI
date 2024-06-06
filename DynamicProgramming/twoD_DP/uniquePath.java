@@ -22,4 +22,14 @@ public class uniquePath {
         }
         return f(i-1,j,dp)+f(i,j-1,dp);
     }
+
+    public int OptimizedApproach(int m, int n) {
+        long answer = 1;
+        for (int i = n; i < (m + n - 1); i++) {
+            answer *= i;
+            answer /= (i - n + 1);
+        }
+        return (int) answer;
+
+    }
 }
