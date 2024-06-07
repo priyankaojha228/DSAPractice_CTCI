@@ -1,6 +1,6 @@
-package DynamicProgramming;
+package DynamicProgramming.DP_Subsequences;
 import java.util.*;
-public class DP_Subsequences {
+public class SubsetSum {
     static boolean subsetSumUtil(int ind, int target, int[] arr, int[][] dp) {
         // If the target sum is achieved, return true
         if (target == 0)
