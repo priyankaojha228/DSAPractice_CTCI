@@ -29,15 +29,15 @@ public class WildcardMatching {
         if(text1.charAt(i)==text2.charAt(j) || text2.charAt(j)=='?'){
             return dp[i][j]=memo(dp,i-1,j-1,text1,text2);
         }
-        else{
-            if(text2.charAt(j)=='*'){
-                return dp[i][j]= (memo(dp,i-1,j,text1,text2)==1 || memo(dp,i,j-1,text1,text2)==1)?1:0;
-            }
-            else{
-                return 0;
-            }
 
+        if(text2.charAt(j)=='*'){
+            return dp[i][j]= (memo(dp,i-1,j,text1,text2)==1 || memo(dp,i,j-1,text1,text2)==1)?1:0;
         }
+
+        return 0;
+
+
+
 
     }
 }
