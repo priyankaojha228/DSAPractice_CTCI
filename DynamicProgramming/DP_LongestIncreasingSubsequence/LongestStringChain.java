@@ -1,46 +1,50 @@
 package DynamicProgramming.DP_LongestIncreasingSubsequence;
 import java.util.*;
 public class LongestStringChain {
-    public List<Integer> largestDivisibleSubset(int[] nums) {
-        Arrays.sort(nums);
-        int n=nums.length;
+    static Comparator<String> comp = (s1, s2) -> s1.length() - s2.length();
+    public int longestStrChain(String[] words) {
+        int n=words.length;
+        Arrays.sort(words,comp);
         int[] dp=new int[n];
         Arrays.fill(dp,1);
-        int[] hash=new int[n];
-        Arrays.fill(hash,1);
-
+        int maxi=1;
         for(int i=0; i<=n-1; i++){
-
-            hash[i] = i;
             for(int prev_index = 0; prev_index <=i-1; prev_index ++){
 
-                if((nums[prev_index]%nums[i]==0||nums[i]%nums[prev_index]==0) && 1 + dp[prev_index] > dp[i]){
+                if((find(words[i],words[prev_index])) && 1 + dp[prev_index] > dp[i]){
                     dp[i] = 1 + dp[prev_index];
-                    hash[i] = prev_index;
+                    if(dp[i]>maxi){
+                        maxi=dp[i];
+                    }
+
                 }
             }
         }
 
-        int ans = -1;
-        int lastIndex =-1;
+        return maxi;
 
-        for(int i=0; i<=n-1; i++){
-            if(dp[i]> ans){
-                ans = dp[i];
-                lastIndex = i;
+    }
+
+    static boolean find(String str1,String str2){
+        if (str1.length() != str2.length() + 1) {
+            return false;
+        }
+        int count=0;
+        int i=0; int j=0;
+        while(i<str1.length()&&j<str2.length()){
+            if(str1.charAt(i)==str2.charAt(j)){
+                count++;
+                i++;
+                j++;
+            }
+            else{
+                i++;
             }
         }
-
-        List<Integer> temp=new ArrayList<>();
-        temp.add(nums[lastIndex]);
-
-        while(hash[lastIndex] != lastIndex){
-            lastIndex = hash[lastIndex];
-            temp.add(nums[lastIndex]);
+        if(count==str2.length()){
+            return true;
         }
-
-        Collections.reverse(temp);
-        return temp;
+        return false;
 
     }
 }
