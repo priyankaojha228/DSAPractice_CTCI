@@ -35,8 +35,8 @@ public class ValidParenthesis {
                     isValid = isValidString(index + 1, openCount - 1, str, memo);
                 }
             }
-            memo[index][openCount] = isValid ? 1 : 0;
-            return isValid;
+            return (memo[index][openCount] = isValid ? 1 : 0)==1?true:false;
+
         }
     }
 
